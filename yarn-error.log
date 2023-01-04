@@ -1,0 +1,36 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\rahma\.yarn\releases\yarn-1.23.0-20220130.1630.cjs add @nestjs/microservice
+
+PATH: 
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\rahma\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\ProgramData\ComposerSetup\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Go\bin;C:\Program Files\PuTTY\;C:\laragon\bin;C:\laragon\bin\apache\httpd-2.4.47-win64-VS16\bin;C:\laragon\bin\composer;C:\laragon\bin\git\bin;C:\laragon\bin\git\cmd;C:\laragon\bin\git\mingw64\bin;C:\laragon\bin\git\usr\bin;C:\laragon\bin\laragon\utils;C:\laragon\bin\php\php-8.1.5-Win32-vs16-x64;C:\laragon\bin\nginx\nginx-1.19.10;C:\laragon\bin\ngrok;C:\laragon\bin\nodejs\node-v14;C:\laragon\bin\notepad++;C:\laragon\bin\php\php-7.4.19-Win32-vc15-x64;C:\laragon\bin\redis\redis-x64-3.2.100;C:\laragon\bin\telnet;C:\laragon\usr\bin;C:\Users\rahma\AppData\Local\Yarn\config\global\node_modules\.bin;C:\Users\rahma\AppData\Roaming\Composer\vendor\bin;C:\Users\rahma\AppData\Roaming\npm;C:\Users\rahma\AppData\Local\Microsoft\WindowsApps;C:\Users\rahma\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\rahma\AppData\Local\Yarn\bin;C:\Users\rahma\AppData\Local\protoc\bin;C:\Users\rahma\go\bin
+
+Yarn version: 
+  1.23.0-20220130.1630
+
+Node version: 
+  18.12.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@nestjs%2fmicroservice: Not found
+      at params.callback [as _callback] (C:\Users\rahma\.yarn\releases\yarn-1.23.0-20220130.1630.cjs:78518:18)
+      at self.callback (C:\Users\rahma\.yarn\releases\yarn-1.23.0-20220130.1630.cjs:135160:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (C:\Users\rahma\.yarn\releases\yarn-1.23.0-20220130.1630.cjs:136132:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (C:\Users\rahma\.yarn\releases\yarn-1.23.0-20220130.1630.cjs:136054:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

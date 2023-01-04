@@ -1,0 +1,4 @@
+interface Response {
+    data: undefined,
+    
+}
