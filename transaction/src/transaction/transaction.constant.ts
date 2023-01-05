@@ -1,4 +1,0 @@
-export const transactionConstant = {
-    REPOSITORY : 'TRANSACTION_REPOSITORY',
-    ORDER_REPOSITORY: 'ORDER_REPOSITORY'
-}

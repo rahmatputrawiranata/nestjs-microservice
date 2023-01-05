@@ -42,7 +42,4 @@ export class Transaction {
 
     @Column()
     user_id: string
-
-    @Column()
-    order_item_id: string;
 }

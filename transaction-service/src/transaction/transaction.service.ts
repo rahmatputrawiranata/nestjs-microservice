@@ -23,6 +23,31 @@ export class TransactionService {
     ) {}
 
     async create(createTransactionDto: CreateTransactionDto): Promise<Transaction | null> {
+        // check is product valid or not and create new constant data 
+        const orderItemProduct: {
+            product_id: string,
+            price: number,
+            quantity: number,
+            total_amount: number
+        }[] = []
+        await Promise.all(
+            createTransactionDto.order_items.map(async(order_item) => {
+                const product: {data: Product} = await firstValueFrom(
+                    this.productsClient.send('findById', order_item.product_id)
+                ); 
+
+                if(!product?.data) {
+                    throw new Error("Invalid Product Id")
+                }else{
+                    orderItemProduct.push({
+                        product_id: order_item.product_id,
+                        price: product.data.price,
+                        quantity: order_item.quantity,
+                        total_amount: product.data.price * order_item.quantity
+                    })
+                }
+            })
+        )
         const queryRunner = this.dataSource.createQueryRunner()
         await queryRunner.connect()
         await queryRunner.startTransaction()
@@ -35,38 +60,34 @@ export class TransactionService {
             let transaction_amount = 0;
             
             await Promise.all(
-                createTransactionDto.order_items.map(async(orderItem) => {
-                    const product: Product = await firstValueFrom(
-                        this.productsClient.send('findById', orderItem.product_id)
-                    )
-                    if(!product) {
-                        throw new Error("Invalid Product Id")
-                    }
-                    const total_amount = product.price * orderItem.quantity
+                orderItemProduct.map(async(order_item) => {
                     await queryRunner.manager.save(OrderItem, {
-                        product_id: orderItem.product_id,
+                        product_id: order_item.product_id,
                         user_id: createTransactionDto.user_id,
                         transaction_id: transaction.id,
-                        quantity: orderItem.quantity,
-                        total_amount: total_amount
+                        quantity: order_item.quantity,
+                        total_amount: order_item.total_amount
                     })
 
-                    transaction_amount += total_amount
+                    transaction_amount += order_item.total_amount
                 })
             )
+            
             await queryRunner.manager.update(Transaction, {
                 id: transaction.id
             }, {
                 amount: transaction_amount
             })
+            
             await queryRunner.commitTransaction();
             const trxDetail = await this.transactionRepository.findOne({
                 where: {
                     id: transaction.id
-                },
-                relations: ['order_items.product', 'user']
+                }
             })
+            
             res = trxDetail
+            
             return res
         } catch (error) {
             await queryRunner.rollbackTransaction()
@@ -86,9 +107,9 @@ export class TransactionService {
                 throw 'Invalid Transaction Id'
             }
 
-            if(transaction.transaction_status !== TransactionStatus.PENDING) {
-                throw 'This Transaction already processed'
-            }
+            // if(transaction.transaction_status !== TransactionStatus.PENDING) {
+            //     throw 'This Transaction already processed'
+            // }
 
             if(Number(transaction.amount) !== Number(processTransactionDto.amount)) {
                 throw 'Invalid Payment Amount'

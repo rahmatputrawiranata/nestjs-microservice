@@ -28,4 +28,12 @@ export class ProductsController {
     }
   }
 
+  @MessagePattern('findById')
+  async findById(id: string): Promise<{data: Product}> {
+    const data = await this.productsService.find(id)
+    return {
+      data: data
+    }
+  }
+
 }

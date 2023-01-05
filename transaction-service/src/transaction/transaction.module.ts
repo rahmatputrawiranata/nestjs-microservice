@@ -21,8 +21,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'PRODUCT_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: process.env.USER_SERVICE_HOST || "0.0.0.0",
-          port: (process.env.USER_SERVICE_PORT || 8002) as number
+          host: process.env.PRODUCT_SERVICE_HOST || "0.0.0.0",
+          port: (process.env.PRODUCT_SERVICE_PORT || 8002) as number
         }
       },
       {
@@ -30,7 +30,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.TCP,
         options: {
           host: process.env.USER_SERVICE_HOST || "0.0.0.0",
-          port: (process.env.USER_SERVICE_PORT || 8002) as number
+          port: (process.env.USER_SERVICE_PORT || 8004) as number
         }
       }
     ])

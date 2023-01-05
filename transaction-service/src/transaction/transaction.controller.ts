@@ -1,6 +1,5 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { Response } from 'express';
+import { Controller, Inject } from '@nestjs/common';
+import { ClientProxy, MessagePattern } from '@nestjs/microservices';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { ProcessTransactionDto } from './dto/process-transaction.dto';
 import { Transaction } from './entities/transaction.entity';
@@ -9,7 +8,9 @@ import { TransactionService } from './transaction.service';
 @Controller('transaction')
 export class TransactionController {
     constructor(
-        private readonly transactionService: TransactionService
+        private readonly transactionService: TransactionService,
+        @Inject('NOTIFICATION_SERVICE')
+        private notificationsClient: ClientProxy
     ) {}
     @MessagePattern('create')
     async create(createTransactionDto: CreateTransactionDto): Promise<{
@@ -32,7 +33,7 @@ export class TransactionController {
         }
     }
 
-    @MessagePattern('/process')
+    @MessagePattern('process')
     async process(processTransactionDto: ProcessTransactionDto): Promise<{status: boolean, message: string}> {
         try{
             await this.transactionService.process({
