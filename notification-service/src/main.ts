@@ -12,10 +12,5 @@ async function bootstrap() {
     }
   })
   app.listen()
-
-  // const httpServer = await NestFactory.create(AppModule);
-  // httpServer.enableCors();
-  // await httpServer.listen((process.env.NOTIFICATION_SERVER_PORT || 8005) as number);
-  // httpServer.useGlobalPipes(new ValidationPipe())
 }
 bootstrap();

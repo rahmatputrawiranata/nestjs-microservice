@@ -7,7 +7,7 @@ import { OrderItem } from './entities/order-item.entity';
 import { ProcessTransactionDto } from './dto/process-transaction.dto';
 import { ClientProxy } from '@nestjs/microservices';
 import {firstValueFrom} from 'rxjs'
-import { Product } from 'interfaces/product';
+import { Product } from 'src/interfaces/product';
 @Injectable()
 export class TransactionService {
 
