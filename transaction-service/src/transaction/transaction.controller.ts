@@ -18,6 +18,7 @@ export class TransactionController {
         data?: Transaction,
         message: string
     }> {
+        console.log('create transaction pattern')
         try {
             const transaction = await this.transactionService.create(createTransactionDto)
             return {

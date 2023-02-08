@@ -38,6 +38,7 @@ export class TransactionsController {
                 resp_data: transaction.data
               });
         } catch (error) {
+            console.log(error, '@error')
             res.status(HttpStatus.BAD_REQUEST).json({
                 status: false,
                 message: error.message

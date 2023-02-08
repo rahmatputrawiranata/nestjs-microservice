@@ -10,8 +10,8 @@ import { TransactionsService } from './transactions.service';
         name: 'TRANSACTION_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: process.env.USER_SERVICE_HOST || "0.0.0.0",
-          port: (process.env.USER_SERVICE_PORT || 8003) as number
+          host: process.env.TRANSACTION_SERVICE_HOST || "0.0.0.0",
+          port: (process.env.TRANSACTION_SERVICE_PORT || 8003) as number
         }
       }
     ])

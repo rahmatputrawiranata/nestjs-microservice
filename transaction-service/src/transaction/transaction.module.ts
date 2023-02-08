@@ -29,8 +29,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'NOTIFICATION_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: process.env.USER_SERVICE_HOST || "0.0.0.0",
-          port: (process.env.USER_SERVICE_PORT || 8004) as number
+          host: process.env.NOTIFICATION_SERVICE_HOST || "0.0.0.0",
+          port: (process.env.NOTIFICATION_SERVICE_PORT || 8004) as number
         }
       }
     ])

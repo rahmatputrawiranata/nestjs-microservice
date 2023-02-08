@@ -12,6 +12,7 @@ export class UsersController {
 
   @MessagePattern('get')
   async findAll(getUserDto: GetUserDto): Promise<{data: User[], total_item: number}> {
+    console.log('pattern get')
     const users = await this.usersService.findAll(getUserDto)
     const count = await this.usersService.findCount(getUserDto)
 
@@ -23,6 +24,7 @@ export class UsersController {
 
   @MessagePattern('create')
   async create(createUserDto: CreateUserDto): Promise<{data: User}> {
+    console.log('pattern create')
     const user = await this.usersService.store(createUserDto)
     return {
       data: user
@@ -31,12 +33,14 @@ export class UsersController {
 
   @MessagePattern('findByEmail')
   async findByEmail(email:string): Promise<User> {
+    console.log('pattern findByEmail')
     const user = await this.usersService.findByEmail(email)
     return user
   }
 
   @MessagePattern('user_find_by_id')
   async findById(id: string): Promise<{data: User}> {
+    console.log('pattern user_find_by_id')
     const user = await this.usersService.findOne(id)
     return {
       data: user

@@ -5,7 +5,7 @@ import io from 'socket.io-client'
 import { useNavigate, Route, Routes, Link, redirect } from 'react-router-dom';
 
 const SERVER_URL = `${process.env.REACT_APP_SERVER_BE_HOST}:${process.env.REACT_APP_SERVER_BE_PORT}`
-const SOCKET_URL = `${process.env.REACT_APP_SERVER_SOCKET_HOST}:${process.env.REACT_APP_SERVER_SOCKET_PORT}`
+const SOCKET_URL = `localhost:8005`
 const socket = io(`${SOCKET_URL}`, {
   auth: {
     token: localStorage.getItem('token')  
